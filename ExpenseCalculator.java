@@ -1,6 +1,6 @@
 /*
+/*
  * Course: CIS171 - Java Programming
- * Name: Rae McIvor
  * Project Name: Smart Budget & Expense Tracker
  * File: ExpenseCalculator.java
  * Date: October 5, 2026
@@ -40,8 +40,8 @@ public class ExpenseCalculator {
         int compoundingPeriodsPerYear = 12; // Compounded monthly
 
         // Compound interest formula: A = P * (1 + r/n)^(n*t)
-        double amount = principal * Math.pow(1 + (rateAsDecimal / compoundingPeriodsPerYear),
-                compoundingPeriodsPerYear * years);
+        double amount = principal * Math.pow(1 + (rateAsDecimal / compoundingPeriodsPerYear), 
+                                             compoundingPeriodsPerYear * years);
         return amount;
     }
 
@@ -55,7 +55,7 @@ public class ExpenseCalculator {
         // Random percentage between 1% and 5%
         Random rand = new Random();
         double rewardRatePercentage = 1.0 + (5.0 - 1.0) * rand.nextDouble();
-
+        
         return amountSpent * (rewardRatePercentage / 100.0);
     }
 
@@ -82,30 +82,10 @@ public class ExpenseCalculator {
         }
 
         // Convert the string to title case (capitalize first letter, lowercase the rest)
-        // Works nicely for single word categories like "groceries" -> "Groceries"
         String firstChar = cleaned.substring(0, 1).toUpperCase();
         String restOfString = cleaned.substring(1).toLowerCase();
 
         return firstChar + restOfString;
     }
 
-    // Calculates remaining budget balance after subtracting array of recent expenses
-    // double, double[] -> double
-    public static double calculateRemainingBudget(double budget, double[] expenses) {
-        double totalSpent = 0.0;
-
-        if (expenses != null) {
-            for (double expense : expenses) {
-                totalSpent += expense;
-            }
-        }
-
-        return budget - totalSpent;
-    }
-
-    // Validates if a spending amount is non-negative and within budget limit
-    // double, double -> boolean
-    public static boolean isWithinBudget(double spent, double limit) {
-        return spent >= 0 && spent <= limit;
-    }
 }
